@@ -1,0 +1,137 @@
+# Project on Rest Framework on Django using API.
+
+A. As it is an "Authentication API", we can make:
+        a. Register
+        b. Login
+        c. Profile View
+        d. Reset Password
+        e. Send Rest Password Mail
+        f. Logged_In user data fetching
+
+Note: We can make here customally User Model instead of using bydefault of Django
+
+
+1. 1st create "VIRTUAL ENVIRONMENT"
+pip install virtualenv
+virtualenv ....name env.....
+For ex.: 
+virtualenv jobenv
+To activate:
+jobenv\Scripts\activate
+
+2. To see what are the "PACKAGES" installed in Environment
+pip freeze
+
+3. To create Django Project
+pip install django
+django-admin
+django-admin startproject job
+
+4. To create APP in PROJECT
+django-admin startapp jobportal
+or
+python manage.py startapp jobportal
+
+5. To mention our app.
+settings.py of PROJECT and mention in 
+INSTALLED_APPS
+
+6. Django Rest Framework
+https://www.django-rest-framework.org/
+pip install djangorestframework
+
+@ For Configuration:
+Add 'rest_framework', 
+'rest_framework_simplejwt'=This contains two views: 1.access = 1' & 2.refresh = 60'
+to your INSTALLED_APPS setting.
+
+7. To generate Token we r using JWT:
+        a. Simple JWT package:
+https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html
+pip install djangorestframework-simplejwt
+
+        b. Project Configuration in: settings.py
+REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication', )}
+
+8. Go to Settings on websites.
+Copy paste the content from Settings to settings.py and import datetime delta
+
+9. When this API will connect with Front-end, like: React(JSX (Xml)), Angular(TypeScript)
+Backend framework: Django, Laravel is for PHP, Flask.
+
+.....Course Policy Error:.......
+To resolve ERROR which will occur when connected to Front-end Framework:
+1. We have to install package from:
+pypi.org
+django cors header 
+django-cors-headers 3.13.0
+pip install django-cors-headers
+
+For Congifuration:
+Add it to your INSTALLED_APPS:
+"corsheaders"
+
+You will also need to add a MIDDLEWARE class to listen in on responses:
+This one to ADD
+"corsheaders.middleware.CorsMiddleware",
+Above below one
+"django.middleware.common.CommonMiddleware",
+
+10. Atleast Add 3 of the below
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com", =  # this is the example of domain
+    "https://sub.example.com", = # this is the example of sub-domain
+    "http://localhost:3000", = # As React & Angular runs on 3000 port
+    "http://127.0.0.1:3000", = # As React & Angular runs on 3000 port
+]
+Computer Network = For more details related IP address, Wireless, Ports, Hosts, Domain
+Operating System = How does it work = 54 pages
+
+11. To make models in APP, models.py:
+
+django documentation and serach customizing and select:
+Customizing authentication in Django
+Select A Full Example 
+1. from django.contrib.auth.models import (
+        BaseUserManager = # by inheriting this will make User Manager, 
+        AbstractBaseUser = # by inheriting this will make User Model
+)
+
+2. Will Make Custom User Model:
+From Documentation itself: copy paste 
+class MyUser
+
+3. Will make User Manager:
+
+4. AUTH_USER_MODEL = 'jobportal.User'
+
+Note:
+Before migration we have to add this to settings.py file, 
+so that we should ignore FOREIGNKEY ERROR.
+
+*********** Till here Custom Model work done ******************
+
+
+5. As API will run on Path we have to make Path i.e., (urls.py in app)
+
+6. For path we need to make View, views.py
+
+7. As we are making API, we have to make SERIALIZERS i.e.(serializers.py in app)
+
+8. First will have to make view, as we reuired sserializer in views.py
+
+9. urls.py of APP, we have to mention in urls.py of PROJECT
+
+10. requires refresh TOKEN for that we need JWT TOKEN.
+
+11. To chnage the appearance of Django api view on browser:
+'DEFAULT_RENDERER_CLASSES':('rest_framework.renderers.JSONRenderer',)
+
+12. To generate a token (access\refresh) refer videos 1:40:20, and documentation index:
+Creating tokens manually
+
+20. Token 3 parts
+Header = Authoraization to provide access
+Payload = raw to JSON i.e. Body
+Signature = it is a token encryp in SHA256
